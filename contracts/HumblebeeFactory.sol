@@ -5,18 +5,18 @@ pragma experimental ABIEncoderV2;
 import './hyperverse/CloneFactory.sol';
 import './hyperverse/IHyperverseModule.sol';
 import './utils/Counters.sol';
-import './Halfsam.sol';
+import './Humblebee.sol';
 
 /**
  * @dev Clone Factory Implementation for ERC20 Token
  */
 
-contract HalfsamFactory is CloneFactory {
+contract HumblebeeFactory is CloneFactory {
 	using Counters for Counters.Counter;
 
 	/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ S T A T E @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
 	struct Tenant {
-		Halfsam halfsam;
+		Humblebee halfsam;
 		address owner;
 	}
 
@@ -69,7 +69,7 @@ contract HalfsamFactory is CloneFactory {
 		string memory _name,
 		string memory _symbol
 	) external isAuthorized(_tenant) hasAnInstance(_tenant) {
-		Halfsam halfsam = Halfsam(createClone(masterContract));
+		Humblebee halfsam = Humblebee(createClone(masterContract));
 
 		//initializing tenant state of clone
 		halfsam.initialize(_name, _symbol, _tenant);
@@ -84,7 +84,7 @@ contract HalfsamFactory is CloneFactory {
 		emit TenantCreated(_tenant, address(halfsam));
 	}
 
-	function getProxy(address _tenant) public view returns (Halfsam) {
+	function getProxy(address _tenant) public view returns (Humblebee) {
 				if (!instance[_tenant]) {
 			revert InstanceDoesNotExist();
 		}

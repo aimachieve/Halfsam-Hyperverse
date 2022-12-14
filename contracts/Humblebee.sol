@@ -24,7 +24,7 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-contract Halfsam is
+contract Humblebee is
     Context,
     ERC165,
     IERC721,
@@ -56,16 +56,16 @@ contract Halfsam is
         uint256 price;
         uint256 pi;
         bool sale;
-				string title;
-				address owner;
-				string medias;
-				uint[] history;
-				string date; 
-				bool status;
+        string title;
+        address owner;
+        string medias;
+        uint[] history;
+        string date; 
+        bool status;
     }
     mapping(uint256 => NFT) public NFTs;
 
-    constructor() ERC721("BreedingNFT", "BNT") {}
+    constructor() ERC721("Humblebee", "HB") {}
 
     function mintNFT(
         address recipient,
@@ -93,17 +93,21 @@ contract Halfsam is
         tbusd.transferFrom(sender, address(this), price * 10**18);
     }
 
-		function modifyStatus(_status) public {
-			NFTs[newTokenId].status = _status;
-		}
+    function modifyStatus(_status) public {
+        NFTs[newTokenId].status = _status;
+    }
 
-		function claim() public {
-			// 3% fee (3 / 100)
-			tbusd.transferFrom( address(this), msg.sender, amount * 3 / 100);
+    function generateAddress() public {
+        
+    }
 
-			// 97% to another one
-			tbusd.transferFrom(address(this), userB, amount * 97 / 100);
-		}
+    function claim() public {
+        // 3% fee (3 / 100)
+        tbusd.transferFrom( address(this), msg.sender, amount * 3 / 100);
+
+        // 97% to another one
+        tbusd.transferFrom(address(this), userB, amount * 97 / 100);
+    }
     // Utils
     function tokensOfOwner(address _owner)
         external

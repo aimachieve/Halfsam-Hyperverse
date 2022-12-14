@@ -1,5 +1,5 @@
 {
-	"name": "Halfsam smart contract focus",
+	"name": "Humblebee smart contract focus",
 	"version": "1.2.0",
 	"source": "./source/index.ts",
 	"types": "./distribution/index.d.ts",
