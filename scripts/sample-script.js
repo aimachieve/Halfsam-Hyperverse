@@ -15,7 +15,6 @@ async function main() {
 
   // We get the contract to deploy
   const Halfsam = await hre.ethers.getContractFactory("Halfsam");
-  // Gas cost: 1875000000
   const masterContract = await Halfsam.deploy();
   console.log("Master contract deployment");
   console.log(masterContract);
