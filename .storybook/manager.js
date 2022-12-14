@@ -1,0 +1,13 @@
+import { addons } from '@storybook/addons';
+import { create } from '@storybook/theming';
+
+const theme = create({
+	base: 'light',
+	brandTitle: 'Hyperverse-EVM-Tribes',
+	brandUrl: 'https://www.decentology.com',
+	brandImage: 'https://drive.google.com/uc?export=view&id=1gi_Ni_r1xQqrLRVlVVfXVvEEj-THLrq1',
+});
+
+addons.setConfig({
+	theme,
+});
